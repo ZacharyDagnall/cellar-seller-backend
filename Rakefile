@@ -4,3 +4,6 @@
 require_relative "config/application"
 
 Rails.application.load_tasks
+task :start do
+    `rails s -p 3001`
+end
