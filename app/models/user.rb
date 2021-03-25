@@ -4,15 +4,15 @@ class User < ApplicationRecord
     after_create :create_main_folder
 
     def tracked_searches
-        self.folders.select{|folder| folder.folder_type == "trackedSearches"}
+        self.folders.select{|folder| folder.folder_type == "trackedsearches"}
     end
 
     def saved_items
-        self.folders.select{|folder| folder.folder_type == "savedItems"}
+        self.folders.select{|folder| folder.folder_type == "saveditems"}
     end
 
     def create_main_folder
-        self.folders.create(name: "main", folder_type:"savedItems")
+        self.folders.create(name: "main", folder_type:"saveditems")
     end
 
     def main

@@ -15,34 +15,34 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = Users.create(user_params)
+        @user = User.create(user_params)
         render json: @user
     end
 
     def update
-        @user = User.find_by(name: params[:name])
+        @user = User.find(params[:id])
         @user.update(user_params)
         render json: @user
     end
 
     def destroy
-        User.find_by(name: params[:name]).destroy
+        User.find(params[:id]).destroy
         render json: {}
     end
 
     def tracked_searches
-        @user = User.find_by(name: params[:name])
+        @user = User.find(params[:id])
         render json: @user.tracked_searches
     end
 
     def saved_items
-        @user = User.find_by(name: params[:name])
+        @user = User.find(params[:id])
         render json: @user.saved_items
     end
 
     private
 
     def user_params
-        params.require(user).permit(name, password)
+        params.require(:user).permit(:name, :password)
     end
 end
