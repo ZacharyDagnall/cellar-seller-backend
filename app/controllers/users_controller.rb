@@ -9,6 +9,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def main
+        @user=User.find(params[:id])
+        render json: @user.main
+    end
+
     def create
         @user = Users.create(user_params)
         render json: @user

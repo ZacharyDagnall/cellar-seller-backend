@@ -15,4 +15,8 @@ class User < ApplicationRecord
         self.folders.create(name: "main", folder_type:"savedItems")
     end
 
+    def main
+        self.folders.find_by(name: "main").items
+    end
+
 end

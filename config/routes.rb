@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   get '/users/:id/trackedsearches', to: "users#tracked_searches"
   #/users/id/saveditems - get backed saved item folders
   get '/users/:id/saveditems', to: "users#saved_items"
+  #grabs items in the main folder for this user
+  get '/users/:id/main', to: "users#main"
+
+  
   
   #/folders/id/items
   get '/folders/:id/items', to: "folders#items"
