@@ -21,4 +21,22 @@ f2.items.create(name: "DISNEY’S MULAN HEARTS OF HONOR MATTEL 1997 VINTAGE NIB 
 f2.items.create(name: "Mattel MULAN Disney Princess Blossom Beauty 2004 Barbie Doll G7947 MINT", url: "https://www.ebay.com/itm/Mattel-MULAN-Disney-Princess-Blossom-Beauty-2004-Barbie-Doll-G7947-MINT/184723538419?epid=2256058771&hash=item2b026181f3:g:dRQAAOSwO1pgWbWw", price: 22.99, img: "https://i.ebayimg.com/thumbs/images/g/dRQAAOSwO1pgWbWw/s-l225.webp")
 mom.folders.find_by(name: "main").items.create(name: "K2 Camano M Carbon Inline Skate Soft Boot Roller Blades Mens Size 14 Us", url:"https://www.ebay.com/itm/K2-Camano-M-Carbon-Inline-Skate-Soft-Boot-Roller-Blades-Mens-Size-14-Us/154388169155?hash=item23f24081c3:g:3IgAAOSwOCVgW7f8", price: 25.00, img:"https://i.ebayimg.com/thumbs/images/g/3IgAAOSwOCVgW7f8/s-l225.webp")
 
-puts "seeding done"
+puts "first seeding done"
+
+
+search = User.create(name: "Search", password:"bingobongo")
+sfolder1 = search.folders.create(name: "fullmetal-alchemist-manga", folder_type: "search")
+sfolder1.items.create(name: "Fullmetal Alchemist Manga Assortment - Select Volumes", url: "https://www.ebay.com/itm/Fullmetal-Alchemist-Manga-Assortment-Select-Volumes/393139965437?hash=item5b88f7cdfd:g:8ekAAOSwLrNgLvgh", img: "https://i.ebayimg.com/thumbs/images/g/8ekAAOSwLrNgLvgh/s-l225.webp", price: 9.99) 
+sfolder1.items.create(name: "Fullmetal Alchemist Manga x4 (3-In-1) Vol 1-12 4 Omnibus Editions Hiromu Arakawa", url: "https://www.ebay.com/itm/Fullmetal-Alchemist-Manga-x4-3-In-1-Vol-1-12-4-Omnibus-Editions-Hiromu-Arakawa/274727850132?hash=item3ff70e5094:g:sEsAAOSwBH9gVp7W", img: "https://i.ebayimg.com/thumbs/images/g/sEsAAOSwBH9gVp7W/s-l225.webp", price: 40.00) 
+sfolder1.items.create(name: "Fullmetal alchemist manga 12 Book Lot", url: "https://www.ebay.com/itm/Fullmetal-alchemist-manga-12-Book-Lot/313463766408?hash=item48fbe57d88:g:mkoAAOSwRPhgV8vA", img: "https://i.ebayimg.com/thumbs/images/g/mkoAAOSwRPhgV8vA/s-l225.webp", price: 69.99) 
+sfolder1.items.create(name: "Fullmetal Alchemist Manga Books 12 - 15 by Hiromu Arakawa ~ English ~ NEW", url: "https://www.ebay.com/itm/Fullmetal-Alchemist-Manga-Books-12-15-by-Hiromu-Arakawa-English-NEW/324500231139?hash=item4b8db893e3:g:mP8AAOSwcSlgOaO8", img: "https://i.ebayimg.com/thumbs/images/g/mP8AAOSwcSlgOaO8/s-l225.webp", price: 28.00) 
+sfolder1.items.create(name: "Fullmetal Alchemist Vol. 1-27 English Manga Complete Set", url: "https://www.ebay.com/itm/Fullmetal-Alchemist-Vol-1-27-English-Manga-Complete-Set/203309346498?hash=item2f562e6ec2:g:nEQAAOSw3JBgBKoZ", img: "https://www.ebay.com/itm/Fullmetal-Alchemist-Vol-1-27-English-Manga-Complete-Set/203309346498?hash=item2f562e6ec2:g:nEQAAOSw3JBgBKoZ", price: 250.00) 
+sfolder1.items.create(name: "Fullmetal Alchemist Volumes 1-17 MANGA VIZ", url: "https://www.ebay.com/itm/Fullmetal-Alchemist-Volumes-1-17-MANGA-VIZ/353423591565?hash=item5249b0088d:g:n2sAAOSwZt1gUo3g", img: "https://i.ebayimg.com/thumbs/images/g/n2sAAOSwZt1gUo3g/s-l225.webp", price: 175.00) 
+sfolder2 = search.folders.create(name "rollerblades-mens-13", folder_type:"search")
+sfolder2.items.create(name: "Rollerblade Zetra 303 Mens Fitness Inline Skates, Size 13 - Black and Orange", url: "https://www.ebay.com/itm/Rollerblade-Zetra-303-Mens-Fitness-Inline-Skates-Size-13-Black-and-Orange/203308741843?hash=item2f562534d3:g:QSQAAOSw~SZgUQ3T", img: "https://i.ebayimg.com/thumbs/images/g/QSQAAOSw~SZgUQ3T/s-l225.webp", price: 25.00)
+sfolder2.items.create(name: "Ultra Wheels Rollerblades Mens Size 13", url: "https://www.ebay.com/itm/Ultra-Wheels-Rollerblades-Mens-Size-13/294075884715?hash=item447849e4ab:g:X7EAAOSwfK9gVpEI", img: "https://i.ebayimg.com/thumbs/images/g/X7EAAOSwfK9gVpEI/s-l225.webp", price: 44.00)
+sfolder2.items.create(name: "Rollerblade 07958600816 Zetrablade Inline Skates - Black Men’s Size 13.", url: "https://www.ebay.com/itm/Rollerblade-07958600816-Zetrablade-Inline-Skates-Black-Men-s-Size-13/303931750429?epid=25025881081&hash=item46c3be781d:g:vPgAAOSwSqRgWkB0", img: "https://i.ebayimg.com/thumbs/images/g/vPgAAOSwSqRgWkB0/s-l225.webp", price: 46.00)
+sfolder2.items.create(name: "vtg roces cdg paris mens 5 wheel inline skates roller blades size 13 black", url: "https://www.ebay.com/itm/vtg-roces-cdg-paris-mens-5-wheel-inline-skates-roller-blades-size-13-black/353431915774?hash=item524a2f0cfe:g:5tEAAOSwIZpgXDAy", img: "https://i.ebayimg.com/thumbs/images/g/5tEAAOSwIZpgXDAy/s-l225.webp", price: 95.00)
+
+
+puts "dummy seeding done"
