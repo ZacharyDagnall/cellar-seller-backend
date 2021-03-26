@@ -16,13 +16,16 @@ class User < ApplicationRecord
     end
 
     def main
-        self.folders.find_by(name: "main").items
+        self.folders.first.items
     end
 
     def save_search(name, items)
-        newFolder = self.folders.create(name: ("#{name} #{DateTime.now}"), folder_type: "trackedsearches")
+        # puts("are these items?", items)
+        newFolder = self.folders.create(name: "#{name} #{DateTime.now}", folder_type: "trackedsearches")
         items.each do |item|
-            newFolder.items.create(item)
+            # byebug
+            # puts(item[name])
+            newFolder.items.create(name: item[:name], price: item[:price], url: item[:url], img: item[:img])
         end
         newFolder
     end
