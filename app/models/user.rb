@@ -19,4 +19,12 @@ class User < ApplicationRecord
         self.folders.find_by(name: "main").items
     end
 
+    def save_search(name, items)
+        newFolder = self.folders.create(name: ("#{name} #{DateTime.now}"), folder_type: "trackedsearches")
+        items.each do |item|
+            newFolder.items.create(item)
+        end
+        newFolder
+    end
+
 end

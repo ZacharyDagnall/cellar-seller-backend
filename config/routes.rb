@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post '/login', to: "users#login"
   #/users/id/trackedsearches - get back saved searches
   get '/users/:id/trackedsearches', to: "users#tracked_searches"
+  # to save a tracked search
+  post '/users/:id/trackedsearches', to: "users#save_search"
   #/users/id/saveditems - get backed saved item folders
   get '/users/:id/saveditems', to: "users#saved_items"
   #grabs items in the main folder for this user
@@ -28,6 +30,6 @@ Rails.application.routes.draw do
   #/folders/id/items
   get '/folders/:id/items', to: "folders#items"
 
-  post '/search/:search', to: "search#fetch"
+  get '/search/:search_term', to: "search#search"
   
 end

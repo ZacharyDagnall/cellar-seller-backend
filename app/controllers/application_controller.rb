@@ -2,6 +2,8 @@ class ApplicationController < ActionController::API
 
 
     def close_enough(str1, str2) 
+        str1 = str1.downcase
+        str2 = str2.downcase
         return str1==str2 || str1.include?(str2) || str2.include?(str1) || off_by(str1, str2, 2)
     end
     

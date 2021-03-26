@@ -35,6 +35,12 @@ class UsersController < ApplicationController
         render json: @user.tracked_searches
     end
 
+    def save_search
+        @user = User.find(params[:id])
+        @folder = @user.save_search(params[:name], params[:items])
+        render json: @folder
+    end
+
     def saved_items
         @user = User.find(params[:id])
         render json: @user.saved_items
