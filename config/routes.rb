@@ -24,12 +24,11 @@ Rails.application.routes.draw do
   get '/users/:id/saveditems', to: "users#saved_items"
   #grabs items in the main folder for this user
   get '/users/:id/main', to: "users#main"
-
-  
-  
+    
   #/folders/id/items
   get '/folders/:id/items', to: "folders#items"
 
-  get '/search/:search_term', to: "search#search"
+  #/ fetch search results
+  get '/search/:site/:search_term', to: "search#search"
   
 end
