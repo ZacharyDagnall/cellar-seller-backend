@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         if(@user && @user.password == params[:password])
             render json: @user
         else 
-            render json: false
+            render json: ["Invalid username or password"], status: :unauthorized
         end
     end
 
@@ -16,7 +16,11 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
-        render json: @user
+        if @user.valid?
+            render json: @user
+        else
+            render json: @user.errors.full_messages, status: :precondition_failed
+        end
     end
 
     def update
@@ -37,13 +41,19 @@ class UsersController < ApplicationController
 
     def save_search
         @user = User.find(params[:id])
-        @folder = @user.save_search(params[:name], params[:items])
+        @folder = @user.save_folder_and_items(params[:name], params[:items], "trackedsearches")
         render json: @folder
     end
 
     def saved_items
         @user = User.find(params[:id])
         render json: @user.saved_items
+    end
+
+    def save_item_new_folder
+        @user = User.find(params[:id])
+        @folder = @user.save_folder_and_items(params[:name], [params[:item]], "saveditems")
+        render json: @folder
     end
 
     private

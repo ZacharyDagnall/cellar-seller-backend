@@ -3,6 +3,9 @@ class User < ApplicationRecord
     has_many :items, through: :folders
     after_create :create_main_folder
 
+    validates :name, presence: true, uniqueness: true 
+    validates :password, presence: true, length: {minimum: 5} 
+
     def tracked_searches
         self.folders.select{|folder| folder.folder_type == "trackedsearches"}
     end
@@ -19,12 +22,9 @@ class User < ApplicationRecord
         self.folders.first.items
     end
 
-    def save_search(name, items)
-        # puts("are these items?", items)
-        newFolder = self.folders.create(name: "#{name} #{DateTime.now}", folder_type: "trackedsearches")
+    def save_folder_and_items(name, items, folder_type)
+        newFolder = self.folders.create(name: "#{name}"+(folder_type=="trackedsearches"? " #{DateTime.now}": ""), folder_type: folder_type)
         items.each do |item|
-            # byebug
-            # puts(item[name])
             newFolder.items.create(name: item[:name], price: item[:price], url: item[:url], img: item[:img])
         end
         newFolder

@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   get '/users/:id/saveditems', to: "users#saved_items"
   #grabs items in the main folder for this user
   get '/users/:id/main', to: "users#main"
+
+  # save an item to a new folder
+  post '/users/:id/saveitemnewfolder', to: "users#save_item_new_folder"
     
   #/folders/id/items
   get '/folders/:id/items', to: "folders#items"
