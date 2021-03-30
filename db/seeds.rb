@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-u1 = User.create(name:"Bob", password:"Bob")
-u2 = User.create(name:"Jim", password:"Jim")
-u3 = User.create(name:"Joe", password:"Joe")
-u4 = User.create(name:"Pam", password:"Pam")
+u1 = User.create(name:"Bob", password:"Bob111")
+u2 = User.create(name:"Jim", password:"Jim111")
+u3 = User.create(name:"Joe", password:"Joe111")
+u4 = User.create(name:"Pam", password:"Pam111")
 f1 = u1.folders.find_by(name: "main")
 f1.items.create(name:"item", url:"website.com", price:34.23, img:"pictre.com")
 

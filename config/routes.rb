@@ -33,5 +33,7 @@ Rails.application.routes.draw do
 
   #/ fetch search results
   get '/search/:site/:search_term', to: "search#search"
+
+  get "/me", to: "users#me"
   
 end

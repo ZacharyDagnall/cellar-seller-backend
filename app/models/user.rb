@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_many :folders, dependent: :destroy
     has_many :items, through: :folders
     after_create :create_main_folder
+    has_secure_password
 
     validates :name, presence: true, uniqueness: true 
     validates :password, presence: true, length: {minimum: 5} 

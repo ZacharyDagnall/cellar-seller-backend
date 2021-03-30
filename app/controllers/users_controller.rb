@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
+    before_action :authenticate, only: [:me]
+
+    def me
+        render json: @user
+    end
 
     def login
         @user = User.find_by(name: params[:name]) 
-        if(@user && @user.password == params[:password])
-            render json: @user
+        if @user && @user.authenticate(params[:password])
+            token = JWT.encode({ user_id: @user.id }, ENV["JWT_SECRET"], 'HS256')
+            render json: { user: UserSerializer.new(@user), token: token }
         else 
             render json: ["Invalid username or password"], status: :unauthorized
         end
@@ -17,7 +23,8 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         if @user.valid?
-            render json: @user
+            token = JWT.encode({ user_id: user.id }, ENV["JWT_SECRET"], 'HS256')
+            render json: { user: UserSerializer.new(user), token: token }, status: :created
         else
             render json: @user.errors.full_messages, status: :precondition_failed
         end
