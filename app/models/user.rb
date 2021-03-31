@@ -24,7 +24,7 @@ class User < ApplicationRecord
     end
 
     def save_folder_and_items(name, items, folder_type)
-        newFolder = self.folders.create(name: "#{name}"+(folder_type=="trackedsearches"? " #{DateTime.now}": ""), folder_type: folder_type)
+        newFolder = self.folders.create(name: "#{name}"+(folder_type=="trackedsearches"? " #{DateTime.now.strftime("%m/%m/%Y %I:%M%p")}": ""), folder_type: folder_type)
         items.each do |item|
             newFolder.items.create(name: item[:name], price: item[:price], url: item[:url], img: item[:img])
         end

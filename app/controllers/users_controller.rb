@@ -11,7 +11,7 @@ class UsersController < ApplicationController
             token = JWT.encode({ user_id: @user.id }, ENV["JWT_SECRET"], 'HS256')
             render json: { user: UserSerializer.new(@user), token: token }
         else 
-            render json: ["Invalid username or password"], status: :unauthorized
+            render json: {errors: ["Invalid username or password"]}, status: :unauthorized
         end
     end
 
@@ -22,18 +22,27 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
+
         if @user.valid?
             token = JWT.encode({ user_id: user.id }, ENV["JWT_SECRET"], 'HS256')
             render json: { user: UserSerializer.new(user), token: token }, status: :created
         else
-            render json: @user.errors.full_messages, status: :precondition_failed
+            render json: { errors: @user.errors.full_messages}, status: :precondition_failed
         end
     end
 
     def update
         @user = User.find(params[:id])
-        @user.update(user_params)
-        render json: @user
+        if @user.authenticate(params[:oldPassword])
+            @user.update(password: params[:newPassword])
+            if @user.valid?
+                render json: @user
+            else
+                render json: {errors: @user.errors.full_messages}, status: :precondition_failed
+            end
+        else
+            render json: {errors: ["Incorrect current password."]}, status: :unauthorized
+        end
     end
 
     def destroy
@@ -66,6 +75,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :password)
+        params.permit(:name, :password)
     end
 end
