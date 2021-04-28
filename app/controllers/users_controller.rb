@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
 
         if @user.valid?
-            token = JWT.encode({ user_id: user.id }, ENV["JWT_SECRET"], 'HS256')
+            token = JWT.encode({ user_id: @user.id }, ENV["JWT_SECRET"], 'HS256')
             render json: { user: UserSerializer.new(@user), token: token }, status: :created
         else
             render json: { errors: @user.errors.full_messages}, status: :precondition_failed
